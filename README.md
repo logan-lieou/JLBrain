@@ -1,5 +1,3 @@
 ## Hyper Rat
 
-Like a real scientist everything in one file.
-
-### TODO COMPLETE PROJECT THIS IS NOT COMPLETE
+Artificial Neural Network, written in Julia as somewhat of an exersise for the langage.
