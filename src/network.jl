@@ -1,17 +1,18 @@
 using LinearAlgebra: dot
 
 # Neural network struct is mutable
-mutable struct NN{T <: AbstractArray}
-    input::T
-    weights::T
-    output::T
-    y::T
+mutable struct NN
+    input
+    weights
+    output
+    y
 end
 
 # Constructor
-NN(input, y) = NN(input, randn(size(input)), zeros(size(y)), y)
+NN(input, y) = 
+		NN(input, randn(size(input)), zeros(size(y)), y)
 
-# Function is diffrential of ReLU
+# Function is diff of ReLU
 function dReLU(x)
     if (x > 0)
         return 1
@@ -38,4 +39,12 @@ end
 # Get the output from the network
 function getResult(network::NN)
     return network.output
+end
+
+# Training function
+function trainNetwork!(network::NN, epochs::Int)
+	for i = 1:epochs
+		feed_foreward(network)
+		back_propagate(network)
+	end
 end
